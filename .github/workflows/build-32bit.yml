@@ -22,10 +22,7 @@ jobs:
           cache: 'gradle'
 
       - name: Build Android App via Gradle
-        # Jika file build.gradle Anda ada di dalam folder tertentu, ganti tulisan setelah ./ di bawah ini
-        # Contoh jika nama foldernya adalah 'android', ubah menjadi: working-directory: ./android
-        # Jika semua file ada di root luar, Anda bisa menghapus baris working-directory ini.
-        working-directory: .
+        working-directory: ./port
         run: |
           gradle assembleDebug -Pandroid.ndkEmbeddedAbiFilters=arm64-v8a,armeabi-v7a
 

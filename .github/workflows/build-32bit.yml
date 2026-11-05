@@ -21,10 +21,15 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Build Android App via Gradle
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Build Android App via Python Script
         working-directory: ./port
         run: |
-          gradle assembleDebug -Pandroid.ndkEmbeddedAbiFilters=arm64-v8a,armeabi-v7a
+          python build_apk.py
 
       - name: Upload APK Hasil Build
         uses: actions/upload-artifact@v4

@@ -26,9 +26,11 @@ jobs:
         with:
          python-version: '3.10'
 
-      - name: Build Android App via Python Script
-        working-directory: ./src
-        run: python build_apk.py
+            - name: Build Android App via Python Script
+        run: |
+          find . -name "build_apk.py"
+          python $(find . -name "build_apk.py" | head -n 1)
+          
         
       - name: Upload APK Hasil Build
         uses: actions/upload-artifact@v4
